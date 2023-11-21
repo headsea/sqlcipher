@@ -1013,8 +1013,8 @@ TLIBS =
 TCC = $(TCC) -DSQLITE_TEMP_STORE=2
 RCC = $(RCC) -DSQLITE_TEMP_STORE=2
 
-# Flags to include OpenSSL
-TCC = $(TCC) -DSQLITE_HAS_CODEC -I"C:\TOOLs\OpenSSL-Win64\include"
+# Flags to include Win32
+TCC = $(TCC) -DSQLITE_HAS_CODEC -DSQLCIPHER_CRYPTO_WIN32
 
 # Enable/disable loadable extensions, and other optional features
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
@@ -1226,8 +1226,8 @@ LTLIBPATHS = $(LTLIBPATHS) /LIBPATH:$(ZLIBLIBDIR)
 LTLIBS = $(LTLIBS) $(ZLIBLIB)
 !ENDIF
 
-LTLIBPATHS = $(LTLIBPATHS) /LIBPATH:$(ICULIBDIR) /LIBPATH:"C:\TOOLs\OpenSSL-Win64\lib\VC\static"
-LTLIBS = $(LTLIBS) libcrypto64MT.lib libssl64MT.lib ws2_32.lib shell32.lib advapi32.lib gdi32.lib user32.lib crypt32.lib kernel32.lib
+LTLIBPATHS = $(LTLIBPATHS) /LIBPATH:$(ICULIBDIR) 
+LTLIBS = $(LTLIBS) bcrypt.lib ws2_32.lib shell32.lib advapi32.lib gdi32.lib user32.lib crypt32.lib kernel32.lib
 
 # If ICU support is enabled, add the linker options for it.
 #
@@ -1303,6 +1303,7 @@ SRC00 = \
 	$(TOP)\src\crypto_libtomcrypt.c \
 	$(TOP)\src\crypto_nss.c \
 	$(TOP)\src\crypto_openssl.c \
+	$(TOP)\src\crypto_win32.c \
 	$(TOP)\src\crypto.h \
 	$(TOP)\src\sqlcipher.h \
   $(TOP)\src\alter.c \

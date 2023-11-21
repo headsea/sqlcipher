@@ -394,6 +394,7 @@ set flist {
    crypto_libtomcrypt.c
    crypto_nss.c
    crypto_openssl.c
+   crypto_win32.c
    crypto_cc.c
 
    walker.c
